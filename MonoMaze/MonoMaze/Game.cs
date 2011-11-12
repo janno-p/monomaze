@@ -12,11 +12,12 @@ namespace MonoMaze
 
         private Texture2D starfishTexture;
 
-        private bool moving;
         private float rotation;
         private float dx;
         private Vector2 position = new Vector2(100, 100);
-        private Vector2 speed;
+
+        private bool? moveForward = null;
+        private Vector2 speed = new Vector2(MathHelper.TwoPi * 32, 0);
 
         public Game()
         {
@@ -45,17 +46,18 @@ namespace MonoMaze
 
         protected override void Update(GameTime gameTime)
         {
-            if (moving)
+            if (moveForward.HasValue)
             {
-                var direction = speed.X / 64;
-                dx += (float)(gameTime.ElapsedGameTime.TotalSeconds * 2 * speed.X);
-                rotation += (float)(gameTime.ElapsedGameTime.TotalSeconds * direction * 2 * MathHelper.TwoPi);
+                var direction = moveForward.Value ? 1 : -1;
+                dx += (float)(gameTime.ElapsedGameTime.TotalSeconds * speed.X * direction);
+                rotation += (float)(gameTime.ElapsedGameTime.TotalSeconds * MathHelper.TwoPi * direction);
             }
 
             if (Math.Abs(dx) >= Math.Abs(speed.X))
             {
-                moving = false;
-                position.X += speed.X;
+                position.X += speed.X * (moveForward.Value ? 1 : -1);
+
+                moveForward = null;
                 dx = 0;
                 rotation = 0;
             }
@@ -64,16 +66,10 @@ namespace MonoMaze
                 Exit();
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            {
-                moving = true;
-                speed = new Vector2(64, 0);
-            }
+                moveForward = true;
 
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            {
-                moving = true;
-                speed = new Vector2(-64, 0);
-            }
+                moveForward = false;
 
             base.Update(gameTime);
         }

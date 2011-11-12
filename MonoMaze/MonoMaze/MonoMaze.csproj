@@ -101,8 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoMazeContent\MonoMazeContent.contentproj">
-      <Name>MonoMazeContent</Name>
+      <Name>MonoMazeContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{793F6D00-96B0-4E77-8F92-5854B812E674}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

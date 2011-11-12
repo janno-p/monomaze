@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoMaze", "MonoMaze\MonoMaze\MonoMaze.csproj", "{5D06BA00-D947-40B0-BEDA-026807BE8716}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "MonoMazeContent", "MonoMaze\MonoMazeContent\MonoMazeContent.contentproj", "{793F6D00-96B0-4E77-8F92-5854B812E674}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoMazeContent", "MonoMaze\MonoMazeContent\MonoMazeContent.contentproj", "{793F6D00-96B0-4E77-8F92-5854B812E674}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{77559423-6341-4C52-892A-B01860C31726}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
